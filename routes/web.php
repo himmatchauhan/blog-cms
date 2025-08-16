@@ -9,8 +9,8 @@ use App\Http\Controllers\AdminController;
 Route::get('/', [BlogController::class, 'index'])->name('blog.index');
 Route::get('/post/{slug}', [BlogController::class, 'show'])->name('blog.show');
 
-// Authentication routes
-Auth::routes();
+// Authentication routes (excluding registration)
+Auth::routes(['register' => false]);
 
 // Admin routes (protected by auth middleware)
 Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () {
